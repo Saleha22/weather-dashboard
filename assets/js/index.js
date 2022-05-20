@@ -19,6 +19,21 @@ const renderWeatherData = (cityName) => {
   // use API to fetch current weather data
   const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`;
 
+  fetch(currentWeatherUrl)
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (data) {
+      if (!data[0]) {
+        alert("Location not found");
+      } else {
+        appendToHistory(search);
+        fetchWeather(data[0]);
+      }
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
   // from the response cherry pick all the data you want to see in the current weather card
 
   // get the lat and lon from current weather data API response
@@ -40,3 +55,7 @@ const onReady = () => {
 };
 
 $(document).ready(onReady);
+const searchCity = () => {
+  let city = document.getElementById("City").value;
+  alert(city);
+};
