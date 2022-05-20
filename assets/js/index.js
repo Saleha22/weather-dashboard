@@ -1,4 +1,4 @@
-const API_KEY = "YOUR_API_KEY";
+const API_KEY = "b8753c1d706e3e5284cd9616c6e90c03";
 
 const renderCities = () => {
   // get recent cities from LS []
