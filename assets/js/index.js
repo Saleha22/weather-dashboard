@@ -24,6 +24,7 @@ const renderWeatherData = (cityName) => {
       return res.json();
     })
     .then(function (data) {
+      console.log(data);
       if (!data[0]) {
         alert("Location not found");
       } else {
@@ -57,5 +58,6 @@ const onReady = () => {
 $(document).ready(onReady);
 const searchCity = () => {
   let city = document.getElementById("City").value;
+  renderWeatherData(city);
   alert(city);
 };
