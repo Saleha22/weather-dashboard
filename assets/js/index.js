@@ -25,7 +25,7 @@ const renderWeatherData = (cityName) => {
       return res.json();
     })
     .then(function (data) {
-      console.log(data["main"]);
+      console.log(data);
 
       if (!data["main"]) {
         alert("Location not found");
@@ -34,6 +34,7 @@ const renderWeatherData = (cityName) => {
 
         result += `Temp: ${data["main"]["temp"]}<br>`;
         result += `Humidity: ${data["main"]["humidity"]}<br>`;
+        result += `Wind: ${data["wind"]["speed"]}<br>`;
         $("#result").html(result);
       }
     })
