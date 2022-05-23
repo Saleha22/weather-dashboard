@@ -17,7 +17,7 @@ const renderForecastWeather = (forecastWeatherData) => {
 
 const renderWeatherData = (cityName) => {
   // use API to fetch current weather data
-  let result = `<h2>${cityName}</h2>`;
+
   const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`;
 
   fetch(currentWeatherUrl)
@@ -31,7 +31,8 @@ const renderWeatherData = (cityName) => {
         alert("Location not found");
       } else {
         // appendToHistory(search);
-
+        let icon = data["weather"][0]["icon"];
+        let result = `<h2>${cityName}</h2><img src="http://openweathermap.org/img/wn/${icon}@2x.png">`;
         result += `Temp: ${data["main"]["temp"]}F<br>`;
         result += `Humidity: ${data["main"]["humidity"]}%<br>`;
         result += `Wind: ${data["wind"]["speed"]}MPH<br>`;
