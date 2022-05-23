@@ -17,6 +17,7 @@ const renderForecastWeather = (forecastWeatherData) => {
 
 const renderWeatherData = (cityName) => {
   // use API to fetch current weather data
+  $("#result").html(`<h2>${cityName}</h2>`);
   const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`;
 
   fetch(currentWeatherUrl)
