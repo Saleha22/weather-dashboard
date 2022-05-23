@@ -17,7 +17,7 @@ const renderForecastWeather = (forecastWeatherData) => {
 
 const renderWeatherData = (cityName) => {
   // use API to fetch current weather data
-  $("#result").html(`<h2>${cityName}</h2>`);
+  let result = `<h2>${cityName}</h2>`;
   const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`;
 
   fetch(currentWeatherUrl)
@@ -25,12 +25,16 @@ const renderWeatherData = (cityName) => {
       return res.json();
     })
     .then(function (data) {
-      console.log(data);
-      if (!data[0]) {
+      console.log(data["main"]);
+
+      if (!data["main"]) {
         alert("Location not found");
       } else {
-        appendToHistory(search);
-        fetchWeather(data[0]);
+        // appendToHistory(search);
+
+        result += `Temp: ${data["main"]["temp"]}<br>`;
+        result += `Humidity: ${data["main"]["humidity"]}<br>`;
+        $("#result").html(result);
       }
     })
     .catch(function (err) {
@@ -39,7 +43,7 @@ const renderWeatherData = (cityName) => {
   // from the response cherry pick all the data you want to see in the current weather card
 
   // get the lat and lon from current weather data API response
-  const forecastWeatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&units=metric&appid=${API_KEY}`;
+  //const forecastWeatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&units=metric&appid=${API_KEY}`;
 
   // render current weather data
 
