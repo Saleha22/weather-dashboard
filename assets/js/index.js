@@ -32,9 +32,9 @@ const renderWeatherData = (cityName) => {
       } else {
         // appendToHistory(search);
 
-        result += `Temp: ${data["main"]["temp"]}<br>`;
-        result += `Humidity: ${data["main"]["humidity"]}<br>`;
-        result += `Wind: ${data["wind"]["speed"]}<br>`;
+        result += `Temp: ${data["main"]["temp"]}F<br>`;
+        result += `Humidity: ${data["main"]["humidity"]}%<br>`;
+        result += `Wind: ${data["wind"]["speed"]}MPH<br>`;
         $("#result").html(result);
       }
     })
