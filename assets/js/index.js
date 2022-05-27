@@ -32,7 +32,9 @@ const renderWeatherData = (cityName) => {
       } else {
         // appendToHistory(search);
         let icon = data["weather"][0]["icon"];
-        let result = `<h2>${cityName}</h2><img src="http://openweathermap.org/img/wn/${icon}@2x.png">`;
+        let date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+
+        let result = `<h2>${cityName}</h2>${date}<br/><img src="http://openweathermap.org/img/wn/${icon}@2x.png">`;
         result += `Temp: ${data["main"]["temp"]}F<br>`;
         result += `Humidity: ${data["main"]["humidity"]}%<br>`;
         result += `Wind: ${data["wind"]["speed"]}MPH<br>`;
