@@ -31,6 +31,7 @@ const renderWeatherData = (cityName) => {
         alert("Location not found");
       } else {
         // appendToHistory(search);
+        getWeatherforcast(data["coord"]["lon"], data["coord"]["lat"]);
         let icon = data["weather"][0]["icon"];
         let date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
 
@@ -69,4 +70,32 @@ const searchCity = () => {
   let city = document.getElementById("City").value;
   renderWeatherData(city);
   alert(city);
+};
+
+const getWeatherforcast = (lon, lat) => {
+  const currentWeatherUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=hourly,daily&appid=${API_KEY}`;
+  fetch(currentWeatherUrl)
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (data) {
+      console.log(data);
+
+      if (!data["main"]) {
+        alert("Location not found");
+      } else {
+        // appendToHistory(search);
+        let icon = data["weather"][0]["icon"];
+        let date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+
+        let result = `<h2>${cityName}</h2>${date}<br/><img src="http://openweathermap.org/img/wn/${icon}@2x.png">`;
+        result += `Temp: ${data["main"]["temp"]}F<br>`;
+        result += `Humidity: ${data["main"]["humidity"]}%<br>`;
+        result += `Wind: ${data["wind"]["speed"]}MPH<br>`;
+        $("#result").html(result);
+      }
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
 };
