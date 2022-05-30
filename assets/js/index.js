@@ -30,6 +30,10 @@ const renderWeatherData = (cityName) => {
       if (!data["main"]) {
         alert("Location not found");
       } else {
+        let searchResults = localStorage.getItem("searchResults");
+        searchResults = searchResults + "|" + cityName;
+        window.localStorage.setItem("searchResults", searchResults);
+        console.log(searchResults);
         // appendToHistory(search);
         getWeatherforcast(data["coord"]["lon"], data["coord"]["lat"]);
         let icon = data["weather"][0]["icon"];
