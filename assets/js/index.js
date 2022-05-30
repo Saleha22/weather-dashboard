@@ -3,7 +3,12 @@ const API_KEY = "b8753c1d706e3e5284cd9616c6e90c03";
 const renderCities = () => {
   // get recent cities from LS []
   let searchResults = localStorage.getItem("searchResults");
-  document.getElementById("search").innerHTML = searchResults;
+  let cities = searchResults.split("|");
+  let output = "";
+  cities.forEach((city) => {
+    output += `<span class='searchHistoryButton'>${city}</span>`;
+  });
+  document.getElementById("search").innerHTML = output;
   // if [] is empty then render alert
   // else render all recent cities
   // add an event listener on div containing all cities

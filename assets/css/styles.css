@@ -3,3 +3,15 @@
   margin: 10px;
   padding: 10px;
 }
+.searchHistoryButton {
+  background-color: yellow;
+  width: 100px;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#search {
+  height: 50px;
+}
