@@ -76,16 +76,16 @@ const handleFormSubmit = () => {
 
 const onReady = () => {
   // render recent cities
+  renderCities();
 };
 
-$(document).ready(onReady);
 const searchCity = () => {
   let city = document.getElementById("City").value;
   renderWeatherData(city);
 };
 
 const getWeatherforcast = (lon, lat) => {
-  const currentWeatherUrl = `http://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=5&appid=${API_KEY}`;
+  const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&cnt=5&appid=${API_KEY}`;
   fetch(currentWeatherUrl)
     .then(function (res) {
       return res.json();
@@ -109,4 +109,5 @@ const getWeatherforcast = (lon, lat) => {
       console.error(err);
     });
 };
-renderCities();
+
+$(document).ready(onReady);
