@@ -2,9 +2,9 @@ const API_KEY = "b8753c1d706e3e5284cd9616c6e90c03";
 
 const renderCities = () => {
   // get recent cities from LS []
-  let searchResults = localStorage.getItem("searchResults");
-  let cities = searchResults.split("|");
-  let output = "";
+  var searchResults = localStorage.getItem("searchResults");
+  var cities = searchResults.split("|");
+  var output = "";
   cities.forEach((city) => {
     output += `<span class='searchHistoryButton'>${city}</span>`;
   });
@@ -37,7 +37,7 @@ const renderWeatherData = (cityName) => {
       if (!data["main"]) {
         alert("Location not found");
       } else {
-        let searchResults = localStorage.getItem("searchResults");
+        var searchResults = localStorage.getItem("searchResults");
         searchResults = searchResults + "|" + cityName;
         window.localStorage.setItem("searchResults", searchResults);
         console.log(searchResults);
@@ -45,10 +45,10 @@ const renderWeatherData = (cityName) => {
 
         // appendToHistory(search);
         getWeatherforcast(data["coord"]["lon"], data["coord"]["lat"]);
-        let icon = data["weather"][0]["icon"];
-        let date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+        var icon = data["weather"][0]["icon"];
+        var date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
 
-        let result = `<h2>${cityName}</h2>${date}<br/><img src="http://openweathermap.org/img/wn/${icon}@2x.png">`;
+        var result = `<h2>${cityName}</h2>${date}<br/><img src="http://openweathermap.org/img/wn/${icon}@2x.png">`;
         result += `Temp: ${data["main"]["temp"]}F<br>`;
         result += `Humidity: ${data["main"]["humidity"]}%<br>`;
         result += `Wind: ${data["wind"]["speed"]}MPH<br>`;
@@ -80,7 +80,7 @@ const onReady = () => {
 };
 
 const searchCity = () => {
-  let city = document.getElementById("City").value;
+  var city = document.getElementById("City").value;
   renderWeatherData(city);
 };
 
@@ -95,10 +95,10 @@ const getWeatherforcast = (lon, lat) => {
 
       if (data["main"]) {
         // appendToHistory(search);
-        let icon = data["weather"][0]["icon"];
-        let date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+        var icon = data["weather"][0]["icon"];
+        var date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
 
-        let result = `<div class='weatherBox'><h2>${cityName}</h2>${date}<br/><img src="http://openweathermap.org/img/wn/${icon}@2x.png">`;
+        var result = `<div class='weatherBox'><h2>${cityName}</h2>${date}<br/><img src="http://openweathermap.org/img/wn/${icon}@2x.png">`;
         result += `Temp: ${data["main"]["temp"]}F<br>`;
         result += `Humidity: ${data["main"]["humidity"]}%<br>`;
         result += `Wind: ${data["wind"]["speed"]}MPH<br></div>`;
