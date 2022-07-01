@@ -157,8 +157,11 @@ const renderWeatherData = async (cityName) => {
       renderCurrentWeatherCard(todaysWeather, "Europe/London");
 
       var searchResults = localStorage.getItem("searchResults");
-      searchResults = searchResults + "|" + cityName;
+      if (!searchResults.includes(cityName)) {
+        searchResults = searchResults + "|" + cityName;
+      }
       window.localStorage.setItem("searchResults", searchResults);
+      //window.localStorage.setItem("searchResults", "");
       renderCities();
 
       // // appendToHistory(search);
