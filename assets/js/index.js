@@ -153,16 +153,25 @@ const renderWeatherData = async (cityName) => {
 
       const todaysWeather = forecastData.daily[0];
       const forecastWeather = forecastData.daily.slice(1, 6);
+      console.log(forecastWeather);
 
       renderCurrentWeatherCard(todaysWeather, "Europe/London");
+      renderCurrentWeatherCard(forecastWeather[0], "Europe/London");
+      renderCurrentWeatherCard(forecastWeather[1], "Europe/London");
+      renderCurrentWeatherCard(forecastWeather[2], "Europe/London");
+      renderCurrentWeatherCard(forecastWeather[3], "Europe/London");
 
       var searchResults = localStorage.getItem("searchResults");
+      console.log(searchResults);
+      if (searchResults == null) {
+        searchResults = cityName;
+      }
       if (!searchResults.includes(cityName)) {
         searchResults = searchResults + "|" + cityName;
       }
       window.localStorage.setItem("searchResults", searchResults);
       //window.localStorage.setItem("searchResults", "");
-      renderCities();
+      // renderCities();
 
       // // appendToHistory(search);
       // var icon = data["weather"][0]["icon"];
