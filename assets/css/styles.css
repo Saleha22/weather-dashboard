@@ -3,8 +3,10 @@
   margin: 10px;
   padding: 10px;
 }
-.searchHistoryButton {
-  background-color: yellow;
+.searchHistoryButton,
+.searchFormButton {
+  background-color: purple;
+  color: white;
   width: 100px;
   margin: 10px;
   padding: 10px;
@@ -19,4 +21,21 @@
 .card {
   float: left;
   display: block;
+}
+
+h1 {
+  background-color: purple;
+  color: white;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#cityForm {
+  padding: 10px;
+  background: grey;
+}
+#cityForm input {
+  margin-bottom: 10px;
 }
